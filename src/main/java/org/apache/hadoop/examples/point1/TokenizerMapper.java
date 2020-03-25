@@ -35,8 +35,8 @@ public class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {
 		try {
 			json = (JSONObject) parser.parse(value.toString());
 
-			JSONObject text = (JSONObject) json.get("text");
-			StringTokenizer itr = new StringTokenizer(text.toString());
+			String text = json.get("text").toString();
+			StringTokenizer itr = new StringTokenizer(text);
 			while (itr.hasMoreTokens()) {
 				String currentWord = itr.nextToken();
 				currentWord = currentWord.toUpperCase();
